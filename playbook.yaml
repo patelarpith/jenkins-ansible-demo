@@ -3,10 +3,4 @@
   tasks:
     - name: Print Message
       debug:
-        msg: Hello Ansible World
- # install td-agent 
-    - name: Install td-agent
-      become: true
-      yum:
-        name: td-agent
-        state: present
+        msg: Hello, Ansible World
