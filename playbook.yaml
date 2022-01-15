@@ -3,7 +3,7 @@
   tasks:
     - name: Print Message
       debug:
-        msg: Hello, Khush Patel!!
+        msg: Hello, Arpit Patel!!
 
   # install td-agent using yum module "fluentd_name" define in default as "td-agent"
     - name: Install td-agent
