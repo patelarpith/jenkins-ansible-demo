@@ -1,12 +1,41 @@
 ---
 - hosts: test
   tasks:
-    - name: Print Message
+    - name: Print message
       debug:
         msg: Hello, Khush Arpit Patel!!
 
+  # copy td-agent gpg key from local to server
+    - name: Copy GPG Key
+      copy:
+        src: td.repo
+        dest: /etc/yum.repos.d/td-agent.repo
+        mode: 0644  
+  
   # install td-agent using yum module "fluentd_name" define in default as "td-agent"
     - name: Install td-agent
       yum:
         name: td-agent
         state: present
+
+  # create td-agent root directory
+    - name: Create td-agent configuration directory
+      become: true
+      file:
+        path: /etc/td-agent/
+        state: directory
+        mode: 0755
+
+  # copy td-agent configuration from local to server
+    - name: Copy configuration
+      copy:
+        src: td-agent.conf
+        dest: /etc/td-agent/td-agent.conf
+        mode: 0644
+
+  # restart td-agent service
+    - name: Restart td-agent
+      ansible.builtin.systemd:
+        state: restarted
+        daemon_reload: yes
+        name: td-agent
