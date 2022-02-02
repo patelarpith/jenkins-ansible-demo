@@ -3,7 +3,7 @@
   tasks:
     - name: Print message
       debug:
-        msg: Hello, Jimmy Patel!!
+        msg: Hello, Arpit Patel!!
 
   # copy td-agent gpg key from local to server
     - name: Copy GPG Key
