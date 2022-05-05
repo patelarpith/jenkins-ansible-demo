@@ -1,5 +1,5 @@
 ---
-- hosts: test
+- hosts: dev
   tasks:
     - name: Print message
       debug:
